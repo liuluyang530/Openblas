@@ -14,6 +14,8 @@ OPENBLAS_CMAKE_CONFIG := OpenBLASConfig.cmake
 OPENBLAS_CMAKE_CONFIG_VERSION := OpenBLASConfigVersion.cmake
 OPENBLAS_PKGCONFIG_DIR := $(OPENBLAS_LIBRARY_DIR)/pkgconfig
 
+#export NO_SHARED=1
+
 .PHONY : install
 .NOTPARALLEL : install
 

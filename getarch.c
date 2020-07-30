@@ -920,6 +920,21 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #else
 #endif
 
+
+#ifdef FORCE_GPT_GENERIC
+#define FORCE
+#define ARCHITECTURE    "GPT"
+#define SUBARCHITECTURE "GPT_GENERIC"
+#define SUBDIRNAME      "gpt"
+#define ARCHCONFIG   "-DGPT_GENERIC " \
+       "-DL1_DATA_SIZE=32768 -DL1_DATA_LINESIZE=32 " \
+       "-DL2_SIZE=4194304 -DL2_LINESIZE=32 " \
+       "-DDTB_DEFAULT_ENTRIES=128 -DDTB_SIZE=4096 -DL2_ASSOCIATIVE=4 "
+#define LIBNAME   "gpt_generic"
+#define CORENAME  "GPT_GENERIC"
+#else
+#endif
+
 #ifdef FORCE_CORTEXA15
 #define FORCE
 #define ARCHITECTURE    "ARM"
@@ -1211,6 +1226,11 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #ifdef __riscv
 #include "cpuid_riscv64.c"
+#endif
+
+
+#ifdef __gptx__
+#include "cpuid_gpt.c"
 #endif
 
 #ifdef __arm__

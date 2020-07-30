@@ -157,3 +157,6 @@ ARCH_ARM64
 ARCH_RISCV64
 #endif
 
+#if defined(__gptx__)
+ARCH_GPT
+#endif
